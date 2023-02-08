@@ -34,4 +34,4 @@ To perform the rotation, compare the height and width of the received image to k
 If it is a non-square matrix, a square matrix will be created with the largest coordinate (height or width), so that it is possible to perform a 90º rotation. The square matrix is filled with a negative value, receives the original values in the equivalent positions and is rotated with the help of an auxiliary matrix. Next, a new matrix with inverted height and width is created, which will receive the positive values of the rotated square matrix and will be printed on the screen. The result, together with the updated file data, will be forwarded to the menu or again to the function if there are still rotations to be made.
 
 ## salvarP2 and salvarP3:
-Recebem do usuário o nome ou diretório que o arquivo (.pgm ou .ppm) será salvo e o criam com os dados e a imagem editada. Caso haja um arquivo de mesmo nome, será substituído pelo novo.
+They receive from the user the name or directory where the file (.pgm or .ppm) will be saved and create it with the data and the edited image. If there is a file with the same name, it will be replaced by the new one.
