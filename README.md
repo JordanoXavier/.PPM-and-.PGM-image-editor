@@ -19,19 +19,20 @@ The first checks occur to find out if it is possible to carry out the clipping. 
 The new matrix will be printed on the screen and forwarded to the menu along with the updated data for new editions or recording of the file.  
   
 ## grayscaleP3:
-Convert an image read from P3 format to P2. Since P2 images are already grayscale, there is no such functionality for this type.
-The conversion basically consists of performing an average of the RGB values of each pixel and placing them in the equivalent positions of a P2 matrix with only two dimensions.
-The new matrix will be printed on the screen and followed along with the data updated to menuP2 and not to menuP3, in view of the type conversion.
+Convert an image read from P3 format to P2. Since P2 images are already grayscale, there is no such functionality for this type.  
+The conversion basically consists of performing an average of the RGB values of each pixel and placing them in the equivalent positions of a P2 matrix with only two dimensions.  
+The new matrix will be printed on the screen and followed along with the data updated to menuP2 and not to menuP3, in view of the type conversion.  
 
 ## greenscreenP2 and greenscreenP3:
-Read a new image and pass to the previous image all the pixels of the new one except those of a color chosen by the user (mask). To do so, first a new file of the same type as the background image is opened and read.
-Subsequently, it is checked whether the size of the front image is smaller than or equal to that of the background and whether the type is the same, returning to the menu if the effect is impossible and reading the mask color if possible.
-If the color is read, the greenscreen effect is applied. The result will be forwarded to the menu.
+Read a new image and pass to the previous image all the pixels of the new one except those of a color chosen by the user (mask). To do so, first a new file of the same type as the background image is opened and read.  
+Subsequently, it is checked whether the size of the front image is smaller than or equal to that of the background and whether the type is the same, returning to the menu if the effect is impossible and reading the mask color if possible.  
+If the color is read, the greenscreen effect is applied. The result will be forwarded to the menu.  
 
 ## rotacaoP2 and rotacaoP3:
 Rotate the image clockwise by 90, 180 or 270 degrees recursively according to the user's choice in the menu. They receive from the menu the image (data and matrix) and the number of rotations to be made (degrees/90). Recursion is used to rotate the image more than once by 90º, passing a received image rotated along with the remaining number of rotations -1 in the same function. The recursion stopping point, which returns to the menu, is when the number of rotations is 1.
-To perform the rotation, compare the height and width of the received image to know if it is a square matrix or not. If so, a simple 90º rotation is performed using an auxiliary matrix. The result will be printed on the screen and forwarded to the menu or again to the function if there are pending rotations.
-If it is a non-square matrix, a square matrix will be created with the largest coordinate (height or width), so that it is possible to perform a 90º rotation. The square matrix is filled with a negative value, receives the original values in the equivalent positions and is rotated with the help of an auxiliary matrix. Next, a new matrix with inverted height and width is created, which will receive the positive values of the rotated square matrix and will be printed on the screen. The result, together with the updated file data, will be forwarded to the menu or again to the function if there are still rotations to be made.
+To perform the rotation, compare the height and width of the received image to know if it is a square matrix or not. If so, a simple 90º rotation is performed using an auxiliary matrix.  
+The result will be printed on the screen and forwarded to the menu or again to the function if there are pending rotations.
+If it is a non-square matrix, a square matrix will be created with the largest coordinate (height or width), so that it is possible to perform a 90º rotation. The square matrix is filled with a negative value, receives the original values in the equivalent positions and is rotated with the help of an auxiliary matrix. Next, a new matrix with inverted height and width is created, which will receive the positive values of the rotated square matrix and will be printed on the screen. The result, together with the updated file data, will be forwarded to the menu or again to the function if there are still rotations to be made.  
 
 ## salvarP2 and salvarP3:
 They receive from the user the name or directory where the file (.pgm or .ppm) will be saved and create it with the data and the edited image. If there is a file with the same name, it will be replaced by the new one.
