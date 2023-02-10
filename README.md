@@ -1,23 +1,23 @@
 # .PPM and .PGM image editor
  
-It is a program for manipulating images in P2/PGM and P3/PPM format using static allocation structures to store the image in main memory (vector/matrix).
+It is a program for manipulating images in P2/PGM and P3/PPM format using static allocation structures to store the image in main memory (vector/matrix).  
+  
+The program starts in the main function, identifies the initializationFile, which receives from the user the name or directory of the file to be opened and opens it.  
+In the same function, the first line of the file is read, which indicates the type of image (P2 or P3).  
 
-The program starts in the main function, identifies the initializationFile, which receives from the user the name or directory of the file to be opened and opens it.
-In the same function, the first line of the file is read, which indicates the type of image (P2 or P3).
-
-When identifying the format, the program can go to two functions: lerP2 or lerP3. These two functions read as remaining information from the file (height and width, maximum color, and the color value of each pixel). The first 3 lines of the file will be stored in a structure called dataArquivo which will be used later to pass such information as a parameter to other functions.
-In the case of the lerP2 function, the cores will be stored in a matrix with the dimensions read from the file. In the P3 function, they will also be stored in a matrix with the height and width read, but with 3 dimensions for storing the 3 cores of each pixel (R,G,B), since this type of file supports this, unlike P2.
-
-After the complete reading of the file, the structure dataArquivo and the matrix read will be transmitted to the respective function of the menu of each type/format (function menuP2 or menuP3). In functions menuP2 and menuP3, the user has the possibility to choose between 6 options that call functions (individual of each menu) to carry out operations with the read data.
-All options have versions P2 and P3 due to the difference in storing pixels for each image format, however, the operation for both types is identical. Furthermore, all of them except the image saving options return to the respective menu, which this time receives the edited image data.
-
-The functions are:
-
-## recorteP2 and recorteP3:
-Receive from the user a cut/selection of the initial image for the output image. This cropping is mapped from the X1 and Y1 coordinates (starting at 0) of the upper left X2 and Y2 coordinates of the lower right corner of the area to be cropped.
-The first checks occur to find out if it is possible to carry out the clipping. In case of impossibility, it returns to the respective menu with the previous matrix and data. Otherwise, a new matrix is generated with the clipping area in the original.
-The new matrix will be printed on the screen and forwarded to the menu along with the updated data for new editions or recording of the file.
-
+When identifying the format, the program can go to two functions: lerP2 or lerP3. These two functions read as remaining information from the file (height and width, maximum color, and the color value of each pixel). The first 3 lines of the file will be stored in a structure called dataArquivo which will be used later to pass such information as a parameter to other functions.  
+In the case of the lerP2 function, the cores will be stored in a matrix with the dimensions read from the file. In the P3 function, they will also be stored in a matrix with the height and width read, but with 3 dimensions for storing the 3 cores of each pixel (R,G,B), since this type of file supports this, unlike P2.    
+  
+After the complete reading of the file, the structure dataArquivo and the matrix read will be transmitted to the respective function of the menu of each type/format (function menuP2 or menuP3). In functions menuP2 and menuP3, the user has the possibility to choose between 6 options that call functions (individual of each menu) to carry out operations with the read data.  
+All options have versions P2 and P3 due to the difference in storing pixels for each image format, however, the operation for both types is identical. Furthermore, all of them except the image saving options return to the respective menu, which this time receives the edited image data.  
+  
+The functions are:  
+  
+## recorteP2 and recorteP3:  
+Receive from the user a cut/selection of the initial image for the output image. This cropping is mapped from the X1 and Y1 coordinates (starting at 0) of the upper left X2 and Y2 coordinates of the lower right corner of the area to be cropped.  
+The first checks occur to find out if it is possible to carry out the clipping. In case of impossibility, it returns to the respective menu with the previous matrix and data. Otherwise, a new matrix is generated with the clipping area in the original.  
+The new matrix will be printed on the screen and forwarded to the menu along with the updated data for new editions or recording of the file.  
+  
 ## grayscaleP3:
 Convert an image read from P3 format to P2. Since P2 images are already grayscale, there is no such functionality for this type.
 The conversion basically consists of performing an average of the RGB values of each pixel and placing them in the equivalent positions of a P2 matrix with only two dimensions.
